@@ -71,14 +71,14 @@ namespace EFDataLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Sentence = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Sentence = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsCorrect = table.Column<bool>(type: "bit", nullable: false),
                     QuestionEFId = table.Column<int>(type: "int", nullable: true),
                     QuestionEFSentence = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Answer", x => new { x.Id, x.Sentence });
+                    table.PrimaryKey("PK_Answer", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Answer_Question_QuestionEFId_QuestionEFSentence",
                         columns: x => new { x.QuestionEFId, x.QuestionEFSentence },

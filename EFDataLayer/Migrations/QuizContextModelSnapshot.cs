@@ -30,9 +30,6 @@ namespace EFDataLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Sentence")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<bool>("IsCorrect")
                         .HasColumnType("bit");
 
@@ -42,7 +39,11 @@ namespace EFDataLayer.Migrations
                     b.Property<string>("QuestionEFSentence")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("Id", "Sentence");
+                    b.Property<string>("Sentence")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("QuestionEFId", "QuestionEFSentence");
 

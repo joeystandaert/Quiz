@@ -1,4 +1,4 @@
-﻿using EFDataLayer.Migrations;
+﻿
 using EFDataLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using static System.Net.Mime.MediaTypeNames;
@@ -17,7 +17,7 @@ namespace EFDataLayer
         public QuizContext()
         {
              
-            this.connectionString = "Data Source=BOOK-3RN0FJSVF3\\SQLEXPRESS;Initial Catalog = Quiz;Persist Security Info=True;User ID=test;Password=test;TrustServerCertificate=True";
+            this.connectionString = "Data Source=DESKTOP-0RLBLN2\\SQLEXPRESS;Initial Catalog = Quiz;Persist Security Info=True;User ID=root;Password=root;TrustServerCertificate=True";
         }
 
         public DbSet<PlayerEF> Player { get; set; }  

@@ -50,5 +50,10 @@ namespace UI
         {
             SystemCommands.MinimizeWindow(this);
         }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

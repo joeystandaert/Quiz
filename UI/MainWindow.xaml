@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI"
+        xmlns:viewModel ="clr-namespace:UI.MVVM.ViewModel"
+        
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="920"
         WindowStyle="None"
@@ -11,14 +13,18 @@
         Background="Transparent"
         AllowsTransparency="True"
         >
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_1" />
         <CommandBinding Command="{x:Static SystemCommands.MaximizeWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_2" />
         <CommandBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_3" />
     </Window.CommandBindings>
     <Border 
-        Background="#272537"
-        CornerRadius="20"
+        Background="#f0f2f6"
+        CornerRadius="35"
         >
         <Grid>
             <Grid.ColumnDefinitions>
@@ -33,34 +39,67 @@
             <TextBlock 
                 Text="Quizle"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Foreground="White"
-                FontSize="22" />
+                HorizontalAlignment="left"
+                Foreground="#1b1d21"
+                FontSize="32"
+                Margin="25 0 0 0"/>
+            
+            <Border Background="#5645bf"
+                    CornerRadius="0 30 0 30"
+                    Grid.Row="1">
+                
+                <StackPanel Margin="20">
+                    <RadioButton 
+                        Content="Home"
+                        Height="50"
+                        Foreground="White"
+                        FontSize="14"
+                        Style="{StaticResource MenuButtonTheme}"
+                        IsChecked="True"
+                        Command="{Binding HomeViewCommand}"
+                    />
+                    <RadioButton 
+                        Content="Quiz"
+                        Height="50"
+                        Foreground="White"
+                        FontSize="14"
+                        Style="{StaticResource MenuButtonTheme}"
+                        Command="{Binding QuizViewCommand}" 
+                    
+                    />
+                    <RadioButton 
+                        Content="Settings"
+                        Height="50"
+                        Foreground="White"
+                        FontSize="14"
+                        Style="{StaticResource MenuButtonTheme}"
+                        Command="{Binding SettingsViewCommand}" 
+                    
 
-            <StackPanel Grid.Row="1">
-                <RadioButton 
-                    Content="Home"
-                    Height="50"
-                    Foreground="White"
-                    FontSize="14"
-                    Style="{StaticResource MenuButtonTheme}"
-                />
-                <RadioButton 
-                    Content="Quiz"
-                    Height="50"
-                    Foreground="White"
-                    FontSize="14"
-                    Style="{StaticResource MenuButtonTheme}"
-                />
-                <RadioButton 
-                    Content="Settings"
-                    Height="50"
-                    Foreground="White"
-                    FontSize="14"
-                    Style="{StaticResource MenuButtonTheme}"
+                    />
+                    <RadioButton 
+                        Content="Players"
+                        Height="50"
+                        Foreground="White"
+                        FontSize="14"
+                        Style="{StaticResource MenuButtonTheme}"
+                        Command="{Binding PlayersViewCommand}" 
+                    
 
-                />
-            </StackPanel>
+                    />
+                    <RadioButton 
+                        Content="Leaderboard"
+                        Height="50"
+                        Foreground="White"
+                        FontSize="14"
+                        Style="{StaticResource MenuButtonTheme}"
+                        Command="{Binding LeaderboardViewCommand}" 
+                    
+
+                    />
+                </StackPanel>
+            </Border>
+            
             <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="top" Margin="0,10,20,0">
                 <Button Command="{x:Static SystemCommands.MinimizeWindowCommand}"  Margin="0,0,10,0" Width="10" Height="10" BorderThickness="0" Foreground="Yellow" Background="Yellow" >
                     <Button.Resources>
@@ -79,6 +118,12 @@
                     </Button.Resources>
                 </Button>
             </StackPanel>
+
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
+
         </Grid>
     </Border>
 </Window>
