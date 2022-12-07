@@ -13,9 +13,7 @@
         Background="Transparent"
         AllowsTransparency="True"
         >
-    <Window.DataContext>
-        <viewModel:MainViewModel/>
-    </Window.DataContext>
+  
     
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_1" />

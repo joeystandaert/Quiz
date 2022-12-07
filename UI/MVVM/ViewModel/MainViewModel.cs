@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UI.Core;
+using UI.MVVM.ViewModel;
 
 namespace UI.MVVM.ViewModel
 {
@@ -40,7 +41,7 @@ namespace UI.MVVM.ViewModel
             HomeVM = new HomeViewModel();
             QuizVM = new QuizViewModel();
             SettingsVM = new SettingsViewModel();
-            PlayersVM = services.GetRequiredService<PlayerViewModel>();
+            PlayersVM = services.GetRequiredService<PlayersViewModel>();
             LeaderboardVM = new LeaderboardViewModel();
 
 
