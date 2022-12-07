@@ -10,28 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace UI.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for PlayersView.xaml
+    /// Interaction logic for AddPlayer.xaml
     /// </summary>
-    public partial class PlayersView : UserControl
+    public partial class AddPlayer : Window
     {
-        public PlayersView()
+        public AddPlayer()
         {
             InitializeComponent();
         }
-        private void BtnOpenAddModal(object sender, RoutedEventArgs e)
+
+        private void BtnCancelClick(object sender, RoutedEventArgs e)
         {
-            AddPlayer modal = new AddPlayer();
-            modal.Owner = Application.Current.MainWindow;
-            modal.DataContext = this.DataContext;
-            modal.ShowDialog();
+            this.Close();
         }
     }
-
-
 }
