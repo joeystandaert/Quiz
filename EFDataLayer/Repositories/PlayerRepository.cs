@@ -7,10 +7,10 @@ using Domain.Interfaces;
 
 namespace EFDataLayer.Repositories
 {
-    public class PlayerRepositoryEF : IPlayerRepository
+    public class PlayerRepository : IPlayerRepository
     {
         string connectionString;
-        public PlayerRepositoryEF(string connectionString)
+        public PlayerRepository(string connectionString)
         {
             this.connectionString = connectionString;
         }

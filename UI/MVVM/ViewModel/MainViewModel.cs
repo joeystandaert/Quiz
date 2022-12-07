@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,12 +35,12 @@ namespace UI.MVVM.ViewModel
             }
         }
 
-        public MainViewModel()
+        public MainViewModel(IServiceProvider services)
         {
             HomeVM = new HomeViewModel();
             QuizVM = new QuizViewModel();
             SettingsVM = new SettingsViewModel();
-            PlayersVM = new PlayersViewModel();
+            PlayersVM = services.GetRequiredService<PlayerViewModel>();
             LeaderboardVM = new LeaderboardViewModel();
 
 

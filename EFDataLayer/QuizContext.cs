@@ -17,7 +17,12 @@ namespace EFDataLayer
         public QuizContext()
         {
              
-            this.connectionString = "Data Source=DESKTOP-0RLBLN2\\SQLEXPRESS;Initial Catalog = Quiz;Persist Security Info=True;User ID=root;Password=root;TrustServerCertificate=True";
+           
+        }
+
+        public QuizContext(DbContextOptions options, string connectionString) : base(options) 
+        {
+            this.connectionString = connectionString;
         }
 
         public DbSet<PlayerEF> Player { get; set; }  
