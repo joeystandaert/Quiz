@@ -12,6 +12,11 @@ namespace Domain.Models
         public string Sentence { get; set; }
         public List<Answer> Anwsers {get;set;}
 
+        public Question()
+        {
+
+        }
+
         public Question(int id, string sentence, List<Answer> anwsers)
         {
             Id = id;

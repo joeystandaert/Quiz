@@ -21,9 +21,20 @@ namespace EFDataLayer.Repositories
             this._dbContext = ctxFactory.Create();
         }
 
-        public void AddBulk()
+        public void AddBulk(List<Question> questions)
         {
-            throw new NotImplementedException();
+            foreach (Question question in questions)
+            {
+                var efQuestion = MapQuestion.MapNewToDb(question);
+                _dbContext.Question.Add(efQuestion);
+            }
+            _dbContext.SaveChanges();
+            _dbContext.ChangeTracker.Clear();
+        }
+        public void DeleteAllQuestions()
+        {
+            _dbContext.Answer.RemoveRange(_dbContext.Answer.ToArray());
+            _dbContext.Question.RemoveRange(_dbContext.Question.ToArray());
         }
 
         public void AddQuestion(string sentence)

@@ -34,5 +34,20 @@ namespace EFDataLayer.Mappers
 				throw new MapException("MapAnswer - MapToDomain",ex);
 			}
 		}
+		public static AnswerEF MapNewToDb(Answer answer)
+		{
+			try
+			{
+				return new AnswerEF
+				{
+					Sentence = answer.Sentence,
+					IsCorrect = answer.IsCorrect,
+				};
+			}
+			catch (Exception ex)
+			{
+				throw new MapException("MapAnswer - MapNewToDb",ex);
+			}
+		}
     }
 }

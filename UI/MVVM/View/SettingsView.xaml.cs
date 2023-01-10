@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UI.MVVM.ViewModel;
 
 namespace UI.MVVM.View
 {
@@ -23,6 +26,16 @@ namespace UI.MVVM.View
         public SettingsView()
         {
             InitializeComponent();
+        }
+        private void openFileDialog(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if(openFileDialog.ShowDialog() == true)
+            {
+                var file = openFileDialog.FileName;
+                var vm = (SettingsViewModel)this.DataContext;
+                vm.ImportQuestions(file);
+            }
         }
     }
 }

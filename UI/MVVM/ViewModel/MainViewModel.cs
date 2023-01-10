@@ -39,7 +39,6 @@ namespace UI.MVVM.ViewModel
         public MainViewModel(IServiceProvider services)
         {
             HomeVM = new HomeViewModel();
-            SettingsVM = new SettingsViewModel();
 
 
 
@@ -59,6 +58,7 @@ namespace UI.MVVM.ViewModel
 
             SettingsViewCommand = new RelayCommand(o =>
             {
+                SettingsVM = services.GetRequiredService<SettingsViewModel>();
                 CurrentView = SettingsVM;
             });
 

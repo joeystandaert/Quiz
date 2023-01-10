@@ -42,6 +42,7 @@ namespace UI
                     services.AddSingleton<PlayersViewModel>();
                     services.AddTransient<QuizViewModel>();
                     services.AddTransient<LeaderboardViewModel>();
+                    services.AddTransient<SettingsViewModel>();
                     services.AddSingleton<MainViewModel>(sp => new MainViewModel(sp));
                     
 

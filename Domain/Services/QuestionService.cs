@@ -17,9 +17,9 @@ namespace Domain.Services
             this.repo = repo;
         }
 
-        public void AddBulk()
+        public void AddBulk(List<Question> questions)
         {
-            this.repo.AddBulk();
+            this.repo.AddBulk(questions);
         }
 
         public void AddQuestion(string sentence)
@@ -64,6 +64,11 @@ namespace Domain.Services
                 }
             }
             return questions;
+        }
+
+        public void DeleteAllQuestions()
+        {
+            this.repo.DeleteAllQuestions();
         }
 
 

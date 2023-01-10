@@ -11,7 +11,7 @@ namespace Domain.Interfaces
     public interface IQuestionRepository
     {
         
-        public void AddBulk();
+        public void AddBulk(List<Question> questions);
 
         public List<Question> GetQuizQuestions(List<int> ids);
 
@@ -20,6 +20,8 @@ namespace Domain.Interfaces
         public void AddQuestion(string senctence);
 
         public List<int> GetQuestionIds();
+
+        public void DeleteAllQuestions();
 
     }
 }
