@@ -70,6 +70,10 @@ namespace UI.MVVM.ViewModel
                 OnPropertyChanged(nameof(CurrentStep));
                 OnPropertyChanged(nameof(CurrentQuestion));
 				OnPropertyChanged(nameof(CurrentQuestionLabel));
+				OnPropertyChanged(nameof(AnswerOne));
+				OnPropertyChanged(nameof(AnswerTwo));
+				OnPropertyChanged(nameof(AnswerThree));
+				OnPropertyChanged(nameof(AnswerFour));
             }
 		}
 

@@ -48,7 +48,22 @@ namespace Domain.Services
                 }
             }
 
-            return this.repo.GetQuizQuestions(randomIds);
+            var questions = this.repo.GetQuizQuestions(randomIds);
+
+            foreach (var question in questions)
+            {
+                var answersRandom = new Random();
+                int n = question.Anwsers.Count;
+                while (n > 1)
+                {
+                    n--;
+                    int k = answersRandom.Next(n + 1);
+                    var tempAnswer = question.Anwsers[k];
+                    question.Anwsers[k] = question.Anwsers[n];
+                    question.Anwsers[n] = tempAnswer;
+                }
+            }
+            return questions;
         }
 
 
