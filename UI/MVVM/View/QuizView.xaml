@@ -15,7 +15,13 @@
             </Button>
         </StackPanel>
         <StackPanel Visibility="{Binding ShowScore}">
-            <TextBlock Text="{Binding FinalScore}" Foreground="Black" />
+            <TextBlock Text="{Binding FinalScore}" 
+                       Foreground="Black"  
+                       HorizontalAlignment="center" 
+                       VerticalAlignment="center"
+                       FontSize="22"
+                       
+                       />
         </StackPanel>
         <Grid Visibility="{Binding ShowQuiz}" Height="445">
             <Grid.ColumnDefinitions>

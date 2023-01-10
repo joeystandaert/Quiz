@@ -8,13 +8,15 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
         <TextBlock Text="Settings"
-                   Foreground="White"
+                   Foreground="Black"
                    FontSize="28"
-                   Margin="0,0,0,20"
+                   Margin="0,50,0,50"
+                   HorizontalAlignment="Center"
+                   
         />
-        <Button Grid.Column="1" Style="{StaticResource Btn}" HorizontalAlignment="Left" Margin="0 0 25 0" Grid.Row="0" Cursor="Hand" FontSize="16" Click="openFileDialog">
+        <Button Grid.Column="1" Style="{StaticResource Btn}" HorizontalAlignment="center" Margin="0 0 0 0" Grid.Row="0" Cursor="Hand" FontSize="16" Click="openFileDialog">
             <TextBlock Text="Import questions" Margin="15 0" />
         </Button>
-        <TextBlock Text="Imported questions successfully" Foreground="Green" FontSize="21"  Visibility="{Binding ImportSuccess}"></TextBlock>
+        <TextBlock Text="Imported questions successfully" Foreground="Green" HorizontalAlignment="center"  FontSize="21"  Visibility="{Binding ImportSuccess}"></TextBlock>
     </StackPanel>
 </UserControl>
