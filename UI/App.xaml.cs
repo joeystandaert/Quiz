@@ -36,14 +36,19 @@ namespace UI
 
                     //services.AddSingleton<StudentViewModel>();
                     services.AddSingleton<PlayerService, PlayerService>();
+                    services.AddSingleton<QuestionService, QuestionService>();
+                    services.AddSingleton<PlayerService, PlayerService>();
+                    services.AddSingleton<GameService, GameService>();
                     services.AddSingleton<PlayersViewModel>();
+                    services.AddTransient<QuizViewModel>();
+                    services.AddTransient<LeaderboardViewModel>();
                     services.AddSingleton<MainViewModel>(sp => new MainViewModel(sp));
+                    
 
                     services.AddSingleton<MainWindow>((services) => new MainWindow()
                     {
-                        //DataContext = services.GetRequiredService<MainViewModel>(services)
                         DataContext = services.GetRequiredService<MainViewModel>()
-                    }); ;
+                    });
                 })
                 .Build();
         }

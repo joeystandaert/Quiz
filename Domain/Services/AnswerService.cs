@@ -14,5 +14,10 @@ namespace Domain.Services
         {
             this.repo = repo;
         }
+
+        public void GetByQuestionId(int questionId)
+        {
+             this.repo.GetByQuestionId(questionId);
+        }
     }
 }

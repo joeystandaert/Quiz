@@ -7,12 +7,17 @@ using Domain.Interfaces;
 
 namespace EFDataLayer.Repositories
 {
-    public class AnswerRepository: IAnswerRepository
+    public class AnswerRepository : IAnswerRepository
     {
-        string connectionString;
-        public AnswerRepository(string connectionString)
+        private QuizContext _dbContext;
+        public AnswerRepository(QuizContextFactory ctxFactory)
         {
-            this.connectionString = connectionString;
+            this._dbContext = ctxFactory.Create();
+        }
+
+        public void GetByQuestionId(int questionId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

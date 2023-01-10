@@ -4,6 +4,7 @@ using EFDataLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFDataLayer.Migrations
 {
     [DbContext(typeof(QuizContext))]
-    partial class QuizContextModelSnapshot : ModelSnapshot
+    [Migration("20221216123655_deletequestions")]
+    partial class deletequestions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,13 +39,16 @@ namespace EFDataLayer.Migrations
                     b.Property<int?>("QuestionEFId")
                         .HasColumnType("int");
 
+                    b.Property<string>("QuestionEFSentence")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Sentence")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuestionEFId");
+                    b.HasIndex("QuestionEFId", "QuestionEFSentence");
 
                     b.ToTable("Answer");
                 });
@@ -100,13 +106,9 @@ namespace EFDataLayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Sentence")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("Sentence")
-                        .IsUnique();
+                    b.HasKey("Id", "Sentence");
 
                     b.ToTable("Question");
                 });
@@ -115,7 +117,7 @@ namespace EFDataLayer.Migrations
                 {
                     b.HasOne("EFDataLayer.Models.QuestionEF", null)
                         .WithMany("Answers")
-                        .HasForeignKey("QuestionEFId");
+                        .HasForeignKey("QuestionEFId", "QuestionEFSentence");
                 });
 
             modelBuilder.Entity("EFDataLayer.Models.GameEF", b =>

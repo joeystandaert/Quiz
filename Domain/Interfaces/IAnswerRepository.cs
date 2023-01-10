@@ -8,5 +8,6 @@ namespace Domain.Interfaces
 {
     public interface IAnswerRepository
     {
+        public void GetByQuestionId(int questionId);
     }
 }

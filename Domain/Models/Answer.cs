@@ -10,12 +10,12 @@ namespace Domain.Models
     {
         public int Id { get; set; }
         public string Sentence { get; set; }
-        public bool isCorrect { get; set; }
+        public bool IsCorrect { get; set; }
         public Answer(int id, string sentence, bool isCorrect)
         {
             Id = id;
             Sentence = sentence;
-            this.isCorrect = isCorrect;
+            this.IsCorrect = isCorrect;
         }
     }
 }

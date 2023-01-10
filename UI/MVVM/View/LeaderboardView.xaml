@@ -6,11 +6,53 @@
              xmlns:local="clr-namespace:UI.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <TextBlock Text="Leaderboard"
-                   Foreground="White"
-                   FontSize="28"
-                   Margin="0,0,0,20"
-        />
-    </StackPanel>
+    <Grid VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition  />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="Leaderbord" FontWeight="SemiBold" FontSize="32" Foreground="#1b1d21" HorizontalAlignment="Left" Margin="25 0 0 0" />
+        <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="LeaderbordDataGrid" 
+            Grid.ColumnSpan="2" 
+            Grid.Column="0"
+            Grid.Row="1" 
+            Margin="25 15 25 25"
+            ItemsSource="{Binding LeaderbordStats}"
+            >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Player" IsReadOnly="True" Width="3*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Player.Name}" VerticalAlignment="Center" Foreground="#1b1d21" FontWeight="SemiBold" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Games played" IsReadOnly="True" Width="3*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding GamesPlayed}" Foreground="#1b1d21" FontWeight="SemiBold" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Maximum score" IsReadOnly="True" Width="3*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding MaxScore}" Foreground="#1b1d21" FontWeight="SemiBold" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
 </UserControl>

@@ -7,10 +7,63 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <TextBlock Text="Quiz"
-                   Foreground="White"
-                   FontSize="28"
-                   Margin="0,0,0,20"
-        />
+        <StackPanel Visibility="{Binding ChoosePlayerVisible}">
+            <TextBlock Text="Please select your player:"></TextBlock>
+            <ComboBox ItemsSource="{Binding Players}" DisplayMemberPath="Name" SelectedValue="{Binding Player}"></ComboBox>
+            <Button Style="{StaticResource Btn}" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0 25 0 0" Cursor="Hand" FontSize="16" Command="{Binding StartQuizCommand}" >
+                <TextBlock Text="Start Quiz" Margin="15 0"   />
+            </Button>
+        </StackPanel>
+        <StackPanel Visibility="{Binding ShowScore}">
+            <TextBlock Text="{Binding FinalScore}" Foreground="Black" />
+        </StackPanel>
+        <Grid Visibility="{Binding ShowQuiz}" Height="445">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition  Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"  />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="{Binding CurrentQuestionLabel}"
+                       Grid.Row="0"
+                       Grid.ColumnSpan="2"
+                       Foreground="Black"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="18"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"/>
+
+            <TextBlock Text="{Binding CurrentQuestion.Sentence}"
+                       Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       Foreground="Black"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="24"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       />
+
+            <Button Grid.Column="0" Style="{StaticResource Btn}" CommandParameter="{Binding AnswerOne.IsCorrect}" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0 0 25 0" Grid.Row="2" Cursor="Hand" FontSize="16" Command="{Binding NextQuestionCommand}" >
+                <TextBlock Text="{Binding AnswerOne.Sentence}" Margin="15 0"   />
+            </Button>
+
+            <Button Grid.Column="1" Style="{StaticResource Btn}" CommandParameter="{Binding AnswerTwo.IsCorrect}" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0 0 25 0" Grid.Row="2" Cursor="Hand" FontSize="16"  Command="{Binding NextQuestionCommand}">
+                <TextBlock Text="{Binding AnswerTwo.Sentence}" Margin="15 0" />
+            </Button>
+
+            <Button Grid.Column="0" Style="{StaticResource Btn}"  CommandParameter="{Binding AnswerThree.IsCorrect}" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0 0 25 0" Grid.Row="3" Cursor="Hand" FontSize="16" Command="{Binding NextQuestionCommand}" >
+                <TextBlock Text="{Binding AnswerThree.Sentence}" Margin="15 0" />
+            </Button>
+
+            <Button Grid.Column="1" Style="{StaticResource Btn}" CommandParameter="{Binding AnswerFour.IsCorrect}" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0 0 25 0" Grid.Row="3" Cursor="Hand" FontSize="16" Command="{Binding NextQuestionCommand}" >
+                <TextBlock Text="{Binding AnswerFour.Sentence}" Margin="15 0" />
+            </Button>
+        </Grid>
     </StackPanel>
 </UserControl>

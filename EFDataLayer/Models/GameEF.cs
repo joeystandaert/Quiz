@@ -14,8 +14,7 @@ namespace EFDataLayer.Models
         public int Id { get; set; }
         [Required]
         public PlayerEF Player{get;set;}
-        [Required]
-        public ICollection<QuestionEF> Questions { get;set;}
+       
         [Required]
         public int Score { get;set;}
         [Required]
@@ -26,11 +25,11 @@ namespace EFDataLayer.Models
 
         }
 
-        public GameEF(int id, PlayerEF player, ICollection<QuestionEF> questions, int score, DateTime date)
+        public GameEF(int id, PlayerEF player,  int score, DateTime date)
         {
             Id = id;
             Player = player;
-            Questions = questions;
+           
             Score = score;
             Date = date;
         }

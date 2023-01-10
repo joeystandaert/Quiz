@@ -15,14 +15,14 @@ namespace EFDataLayer.Mappers
         {
             try
             {
-                PlayerEF player = ctx.Player.Find(game.Player.Id);
+                PlayerEF player = ctx.Player.First(p => p.Id == game.Player.Id);
                 if(player == null)
                 {
                     player = MapPlayer.MapToDB(game.Player);
                 }
-                List<QuestionEF> questions = ctx.Question.Where(q => game.Questions.Select(q => q.Id).Contains(q.Id)).ToList();
+                
 
-                return new GameEF(game.Id, player, questions, game.Score, game.Date);
+                return new GameEF(game.Id, player, game.Score, game.Date);
             }
             catch (Exception ex)
             {
@@ -35,7 +35,7 @@ namespace EFDataLayer.Mappers
         {
             try
             {
-                return new Game(game.Id, MapPlayer.MapToDomain(game.Player),game.Questions.Select(q => MapQuestion.MapToDomain(q)).ToList(),game.Score,game.Date);
+                return new Game(game.Id, MapPlayer.MapToDomain(game.Player),game.Score,game.Date);
             }
             catch (Exception ex)
             {

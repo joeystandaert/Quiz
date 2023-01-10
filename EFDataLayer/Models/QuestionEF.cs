@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFDataLayer.Models
 {
-    [PrimaryKey(nameof(Id), nameof(Sentence))]
+    [PrimaryKey(nameof(Id))]
+    [Index(nameof(Sentence),IsUnique =true)]
     public class QuestionEF
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

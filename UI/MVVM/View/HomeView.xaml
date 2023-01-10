@@ -9,28 +9,28 @@
     <StackPanel>
         <TextBlock Text="Welkom bij QUIZEL"
                    FontSize="28" Width="302"
-                   Foreground="White"
+                   Foreground="Black"
                    Margin="50"
                    TextAlignment="Center" RenderTransformOrigin="0.476,6.374"
         />
         <TextBlock Text="Deze Quiz bestaat uit telkens 10 vragen met 4 mogelijke antwoorden"
                    FontSize="19"
-                   Foreground="White"
+                   Foreground="Black"
                    Margin="20"
                    TextAlignment="Center" RenderTransformOrigin="0.476,6.374"
         />
 
         
-        <RadioButton 
+        <!--<RadioButton 
                     Content="Ga naar de quiz"
                     Width="191"
                     Height="50"
-                    Foreground="White"
+                    Foreground="Black"
                     FontSize="14"
                     Style="{StaticResource MenuButtonTheme}"
                     
 
-                />
+                />-->
 
     </StackPanel>
 </UserControl>

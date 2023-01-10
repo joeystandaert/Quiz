@@ -39,10 +39,7 @@ namespace UI.MVVM.ViewModel
         public MainViewModel(IServiceProvider services)
         {
             HomeVM = new HomeViewModel();
-            QuizVM = new QuizViewModel();
             SettingsVM = new SettingsViewModel();
-            PlayersVM = services.GetRequiredService<PlayersViewModel>();
-            LeaderboardVM = new LeaderboardViewModel();
 
 
 
@@ -56,6 +53,7 @@ namespace UI.MVVM.ViewModel
 
             QuizViewCommand = new RelayCommand(o =>
             {
+                QuizVM = services.GetRequiredService<QuizViewModel>();
                 CurrentView = QuizVM;
             });
 
@@ -66,11 +64,13 @@ namespace UI.MVVM.ViewModel
 
             PlayersViewCommand = new RelayCommand(o =>
             {
+                PlayersVM = services.GetRequiredService<PlayersViewModel>();
                 CurrentView = PlayersVM;
             });
 
             LeaderboardViewCommand = new RelayCommand(o =>
             {
+                LeaderboardVM = services.GetRequiredService<LeaderboardViewModel>();
                 CurrentView = LeaderboardVM;
             });
 

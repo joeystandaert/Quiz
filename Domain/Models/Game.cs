@@ -10,15 +10,20 @@ namespace Domain.Models
     {
         public int Id { get; set; }
         public Player Player { get; set; }
-        public List<Question> Questions { get; set; }
+   
         public int Score { get; set; }
         public DateTime Date { get; set; }
 
-        public Game(int id, Player player, List<Question> questions, int score, DateTime date)
+        public Game()
+        {
+
+        }
+
+        public Game(int id, Player player, int score, DateTime date)
         {
             Id = id;
             Player = player;
-            Questions = questions;
+        
             Score = score;
             Date = date;
         }

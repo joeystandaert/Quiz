@@ -15,7 +15,7 @@ namespace EFDataLayer.Mappers
         {
 			try
 			{
-				return new AnswerEF(answer.Id, answer.Sentence, answer.isCorrect);
+				return new AnswerEF(answer.Id, answer.Sentence, answer.IsCorrect);
 			}
 			catch (Exception ex)
 			{

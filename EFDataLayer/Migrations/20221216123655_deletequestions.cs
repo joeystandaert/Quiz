@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EFDataLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class deletequestions : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,6 +22,19 @@ namespace EFDataLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Player", x => new { x.Id, x.Name });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Question",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Sentence = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Question", x => new { x.Id, x.Sentence });
                 });
 
             migrationBuilder.CreateTable(
@@ -44,25 +57,6 @@ namespace EFDataLayer.Migrations
                         principalTable: "Player",
                         principalColumns: new[] { "Id", "Name" },
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Question",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Sentence = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    GameEFId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Question", x => new { x.Id, x.Sentence });
-                    table.ForeignKey(
-                        name: "FK_Question_Game_GameEFId",
-                        column: x => x.GameEFId,
-                        principalTable: "Game",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -95,11 +89,6 @@ namespace EFDataLayer.Migrations
                 name: "IX_Game_PlayerId_PlayerName",
                 table: "Game",
                 columns: new[] { "PlayerId", "PlayerName" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Question_GameEFId",
-                table: "Question",
-                column: "GameEFId");
         }
 
         /// <inheritdoc />
@@ -109,10 +98,10 @@ namespace EFDataLayer.Migrations
                 name: "Answer");
 
             migrationBuilder.DropTable(
-                name: "Question");
+                name: "Game");
 
             migrationBuilder.DropTable(
-                name: "Game");
+                name: "Question");
 
             migrationBuilder.DropTable(
                 name: "Player");
